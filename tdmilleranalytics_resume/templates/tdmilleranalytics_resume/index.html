@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+  {% for x in resume_header_list %}
+    {% if x.full_name %}
+      <h1> {{ x.full_name }} </h1>
+    {% endif %}
+    {% if x.title %}
+      <h3> {{ x.title }} </h3>
+    {% endif %}
+    {% if x.description %}
+      {{ x.description|safe }}
+    {% endif %}
+  {% endfor %}
+</div>
+
+<div class="row no-gutters">
+
+<div class="col-md-8 order-1 order-md-2">
+  {% for y in resume_category_list_long %}
+    <div class="card m-1">
+      <h3 class="card-header"> {{ y.name }} </h2>
+      {% for item in y.resumeitemlong_set.all %}
+        <div class="card-body">
+          {% if item.title %}
+            <h3 class="card-title">
+              {{ item.title }}
+            </h3>
+          {% endif %}
+          {% if item.organization %}
+              <h4 class="card-subtitle">
+                {{ item.organization }}
+              </h4>
+          {% endif %}
+          {% if item.start %}
+              <p>
+                {{ item.start }} - {{ item.end }}
+              </p>
+          {% endif %}
+          {% if item.description %}
+            <p> 
+              {{ item.description|safe }} 
+            </p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="col-md-4 order-2 order-md-1">
+  {% for z in resume_category_list_short %}
+    <div class="card m-1">
+      <h3 class="card-header"> {{ z.name }} </h2>
+      <ul class="list-group list-group-flush">
+      {% for item in z.resumeitemshort_set.all %}
+        <li class="list-group-item"> {{ item.item_text }} 
+          {% if item.rating_percent %}
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped" style="width:{{ item.rating_percent }}%"></div>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</div>
+
+</div>
+
+
+{% endblock %}

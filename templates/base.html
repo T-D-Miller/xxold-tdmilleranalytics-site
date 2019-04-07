@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    {% load static %}
+
+    <script>
+      dataLayer = {};
+    </script>
+
+    {% block bootstrap_include %}
+      {% include "bootstrap.html" %}
+    {% endblock %}
+
+    <title>{% block full_title_text %}{% block title_text %}Tyler D Miller{% endblock %} | TDMiller Analytics{% endblock %}</title>
+
+    {% block global-dl_include %}{% include 'global-dl.html' %}{% endblock %}
+
+    {% block dl %}{% endblock %}
+
+    {% block head %}{% endblock %}
+ 
+    {% block gtm-head_include %}{% include 'gtm-head.html' %}{% endblock %}    
+
+  </head>
+  <body class="bg-light">
+
+    {% block gtm-body_include %}{% include 'gtm-body.html' %}{% endblock %}
+
+    {% block top-of-body %}{% endblock %}
+
+      {% block header_include %}
+        {% include "header.html" %}
+      {% endblock %}
+      <div class="container bg-white pt-3">
+      {% block content %}{% endblock %}
+
+      {% block footer_include %}
+        {% include "footer.html" %}
+      {% endblock %}
+
+    </div>
+  </body>
+</html>
