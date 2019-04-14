@@ -25,7 +25,7 @@ SECRET_KEY = os.environ['secret_key']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -33,7 +33,6 @@ ALLOWED_HOSTS = [*]
 INSTALLED_APPS = [
     'tdmilleranalytics_resume',
     'ckeditor',
-    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,6 +121,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# Media files (uploaded images and whatnot)
+# https://docs.djangoproject.com/en/2.2/topics/files/
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = 'https://docs.djangoproject.com/en/2.2/topics/files/'
