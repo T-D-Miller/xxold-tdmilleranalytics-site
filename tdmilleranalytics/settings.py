@@ -77,8 +77,14 @@ WSGI_APPLICATION = 'tdmilleranalytics.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['db_name'],
+        'USER': os.environ['db_user'],
+        'PASSWORD': os.environ['db_pass'],
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -121,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+#STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
