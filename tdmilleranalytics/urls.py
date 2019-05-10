@@ -18,6 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('contact/', contact_form.urls),
     path('', include('tdmilleranalytics_resume.urls'))
 ]
